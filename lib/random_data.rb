@@ -23,4 +23,10 @@ module RandomData
     letters.shuffle!
     letters[0,rand(3..8)].join
   end
+
+  def self.random_integer
+    rand(1507)
+    # numbers = []
+    # numbers[0,rand(1507.67)]
+  end
 end
