@@ -29,7 +29,7 @@ end
   Question.create!(
     title: RandomData.random_sentence,
     body: RandomData.random_paragraph
-    resolved: false
+    # resolved: false
   )
 end
 questions = Question.all

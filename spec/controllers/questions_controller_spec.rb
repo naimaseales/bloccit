@@ -36,18 +36,19 @@ RSpec.describe QuestionsController, type: :controller do
   describe "POST create" do
 
     it "increase the number of question by 1" do
-      expect{question :create, question: {title: RandomData.random_sentence, body: RandomData.random_paragraph, resolved: false} }.to change(Question, :count).by(1)
+      expect{post :create, question: {title: RandomData.random_sentence, body: RandomData.random_paragraph} }.to change(Question, :count).by(1)
     end
 
     it "assigns the new question to @question" do
-      question :create, question: {title: RandomData.random_sentence, RandomData.random_paragraph, resolved: false}
+      post :create, question: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
       expect(assigns(:question)).to eq Question.last
     end
 
     it "redirects to the new question" do
-      question :create, question: {title: RandomData.random_sentence, body: RandomData.random_paragraph, resolved: false}
+      post :create, question: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
       expect(response).to redirect_to Question.last
     end
+
   end
 
   describe "GET #show" do
@@ -102,13 +103,21 @@ RSpec.describe QuestionsController, type: :controller do
        expect(updated_question.id).to eq my_question.id
        expect(updated_question.title).to eq new_title
        expect(updated_question.body).to eq new_body
+       expect(updated_question.resolved).to eq false
+     end
+
+     it "updates resolved to be true" do
+       put :update, id: my_question.id, question: {title: my_question.title, body: my_question.body, resolved: true}
+
+       my_question.reload
+       expect(my_question.resolved).to eq true
      end
 
      it "redirects to the updated question" do
        new_title = RandomData.random_sentence
        new_body = RandomData.random_paragraph
 
-       put :update, id: my_question.id, post: {title: new_title, body: new_body, resolved: true}
+       put :update, id: my_question.id, question: {title: new_title, body: new_body, resolved: false}
        expect(response).to redirect_to my_question
      end
    end
