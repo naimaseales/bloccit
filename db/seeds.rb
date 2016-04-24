@@ -28,11 +28,12 @@ posts = Post.all
 end
 
 #create sponsored posts
-50.times do
+100.times do
   SponsoredPost.create!(
   title: RandomData.random_sentence,
   body: RandomData.random_paragraph,
-  price: 10
+  # price: rand(99...399)
+  price: 399
   )
 end
 
