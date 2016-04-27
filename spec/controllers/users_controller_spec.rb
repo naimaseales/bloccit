@@ -19,7 +19,7 @@ RSpec.describe UsersController, type: :controller do
 
     it "instantiates a new user" do
       get :new
-      expect(assign(:user)).to_not be_nil
+      expect(assigns(:user)).to_not be_nil
     end
   end
 
@@ -53,6 +53,11 @@ RSpec.describe UsersController, type: :controller do
     it "sets user password confirmation properly" do
       post :create, user: new_user_attributes
       expect(assigns(:user).password_confirmation).to eq new_user_attributes[:password_confirmation]
+    end
+
+    it "log the user in after sign up" do
+      post :create, user: new_user_attributes
+      expect(session[:user_id]).to eq assigns(:user).id
     end
   end
 
