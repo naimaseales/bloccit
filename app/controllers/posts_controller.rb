@@ -12,7 +12,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.build(post_params)
     @post.user = current_user
