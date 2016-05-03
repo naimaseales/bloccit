@@ -7,6 +7,7 @@ RSpec.describe Topic, type: :model do
   let(:topic) { Topic.create!(name: name, description: description) }
 
   it { is_expected.to have_many(:posts) }
+  it { is_expected.to have_many(:comments) }
   it { is_expected.to have_many(:labelings) }
   it { is_expected.to have_many(:labels).through(:labelings) }
 
