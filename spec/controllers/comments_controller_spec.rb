@@ -11,11 +11,15 @@ require 'rails_helper'
  # #6
    context "guest" do
      describe "POST create" do
-       it "redirects the user to the sign in view" do
+       it "after creating a comment to a post redirects the user to the sign in view" do
          post :create, post_id: my_post.id, comment: {body: RandomData.random_paragraph}
-         post :create, topic_id: my_topic.id, comment: {body: RandomData.random_paragraph}
          expect(response).to redirect_to(new_session_path)
        end
+
+         it "after creating a comment to a topic redirects the user to the sign in view" do
+           post :create, topic_id: my_topic.id, comment: {body: RandomData.random_paragraph}
+           expect(response).to redirect_to(new_session_path)
+         end
      end
 
      describe "DELETE destroy" do
