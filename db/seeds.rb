@@ -39,11 +39,11 @@ posts = Post.all
   )
 end
 
-# user = User.first
-# user.update_attributes!(
-#   email: 'naimaoni@gmail.com',
-#   password: 'helloworld'
-# )
+user = User.first
+user.update_attributes!(
+  email: 'naimaoni@gmail.com',
+  password: 'helloworld'
+)
 
 admin = User.create!(
   name:     'Admin User',
