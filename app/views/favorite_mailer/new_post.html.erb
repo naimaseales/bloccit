@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html, charset=UTF-8" http-equiv="content-type" />
+  </head>
+  <body>
+    <h1>Thanks for favoriting "<%= @post.title %>"! You will be receive notifications of all comments. Don't want to be notified? Unfavorite your <%= link_to "post", topic_post_url(@post.topic, @post) %>.</h1>
+    <p>
+      <%= link_to "View Post on site", topic_post_url(@post.topic, @post) %>
+    </p>
+  </body>
+</html>
