@@ -109,4 +109,34 @@ RSpec.describe User, type: :model do
       expect(known_user.avatar_url(48)).to eq(expected_gravatar)
     end
   end
+
+  describe '.user_has_posts?' do
+    it "returns false if user doesn't have associated posts" do
+      expect(user.user_has_posts?).to eq false
+    end
+
+    it "returns true if user has associated posts" do
+      expect(user.user_has_posts?).to eq true
+    end
+  end
+
+  describe '.user_has_comments?' do
+    it "returns false if user doesn't have associated comments" do
+      expect(user.user_has_comments?).to eq false
+    end
+
+    it "returns true if user has associated comments" do
+      expect(user.user_has_comments?).to eq true
+    end
+  end
+
+  describe '.user_has_favorites?' do
+    it "returns false if user hasn't favortied any posts" do
+      expect(user.user_has_favorites?).to eq false
+    end
+
+    it "returns true if user has favorited posts" do
+      expect(user.user_has_favorites?).to eq true
+    end
+  end
 end
