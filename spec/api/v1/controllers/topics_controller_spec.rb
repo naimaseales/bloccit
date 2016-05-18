@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Api::V1::TopicsController, type: :controller do
   let(:my_user) { create(:user) }
   let(:my_topic) { create(:topic) }
+  let(:my_post) { create(:post) }
 
   context "unauthenticated user" do
     it "GET index returns http success" do

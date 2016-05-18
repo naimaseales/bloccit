@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::UsersController, type: :controller do
   let(:my_user) { create(:user) }
+  let(:my_topic) { create(:topic) }
+  let(:my_post) { create(:post) }
 
   context "unauthenticated users" do
     it "GET index returns http unauthenticated" do
